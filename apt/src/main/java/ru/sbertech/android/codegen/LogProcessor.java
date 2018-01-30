@@ -243,10 +243,10 @@ public class LogProcessor extends AbstractProcessor {
         Name className = element.getEnclosingElement().getSimpleName();
         Name methodName = element.getSimpleName();
 
-        code.addStatement("$T __statParams = new $T($S, $S, __params)",
+        code.addStatement("$T __logParams = new $T($S, $S, __params)",
                 LoggingParams.class, LoggingParams.class, className, methodName);
 
-        code.addStatement("__sender.send(__statParams)");
+        code.addStatement("__sender.send(__logParams)");
 
         builder.addMethod(MethodSpec.methodBuilder(methodName.toString())
                 .returns(ClassName.get(element.getReturnType()))
