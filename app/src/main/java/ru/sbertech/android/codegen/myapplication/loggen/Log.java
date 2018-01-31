@@ -8,11 +8,11 @@ public class Log {
     @LogAnnotation(AllSender.class)
     public interface Main {
 
-        void showLogDebug(@LogMessage String message);
+        void showLogDebug(@LogMessage Object message);
 
-        void showLogError(@LogMessage String message);
+        void showLogError(@LogMessage Object message);
 
-        void saveFileLog(@LogMessage String message);
+        void saveFileLog(@LogMessage Object message);
 
     }
 }

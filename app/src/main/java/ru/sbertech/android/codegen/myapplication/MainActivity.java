@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import ru.sbertech.android.codegen.myapplication.loggen.Log;
+import ru.sbertech.android.codegen.myapplication.loggen.LogEntries;
 import ru.sbertech.android.codegen.myapplication.loggen.LogProxy;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,9 +20,23 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LogProxy.send(Log.Main.class).showLogDebug("Привет");
-                LogProxy.send(Log.Main.class).showLogError("Тест");
+                LogProxy.send(Log.Main.class).showLogDebug(new BusinessCard("Александр", "Новиков","+7920222520" ));
             }
         });
     }
+
+    class BusinessCard{
+        public BusinessCard(String mName, String mSurname, String mPhoneNumber) {
+            this.mName = mName;
+            this.mSurname = mSurname;
+            this.mPhoneNumber = mPhoneNumber;
+        }
+
+        @LogEntries
+        private String mName;
+        private String mSurname;
+        @LogEntries
+        private String mPhoneNumber;
+    }
+
 }
