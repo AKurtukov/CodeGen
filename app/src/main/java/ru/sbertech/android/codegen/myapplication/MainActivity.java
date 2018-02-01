@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LogProxy.send(Log.Main.class).showLogDebug(new BusinessCard("Александр", "Новиков","+7920222520" ));
+                LogProxy.send(Log.Main.class).showLogDebug(
+                        new BusinessCard("Александр", "Новиков","+7920222520" ));
             }
         });
     }
