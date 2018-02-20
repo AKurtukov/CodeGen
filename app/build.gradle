@@ -31,16 +31,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    compile 'org.reflections:reflections:0.9.11'
-
     compile project(':apt-lib')
     annotationProcessor project(':apt')
     compile 'org.jetbrains:annotations-java5:15.0'
 
 }
-
-
-
-//task clean(type: Delete) {
-//    delete rootProject.buildDir
-//}

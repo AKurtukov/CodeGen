@@ -6,6 +6,4 @@ dependencies {
     compile project(':apt-lib')
 
     compile 'com.squareup:javapoet:1.9.0'
-//    compile: 'com.google.auto:auto-common:0.9'
-
 }
