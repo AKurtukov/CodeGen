@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
-public @interface LogAnnotation {
-    Class<? extends Sender> value();
+public @interface EntityForFactory {
+    String value();
 }
