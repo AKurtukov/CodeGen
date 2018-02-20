@@ -13,10 +13,10 @@ public class FactoryReflection {
         Collections.addAll(mObjects, clazz);
     }
 
-    public static Country create(String value) {
+    public static Country create(String countryName) {
         for (Class<?> clazz : mObjects) {
             if (clazz.getAnnotation(CountryReflectionFactor.class) != null &&
-                    clazz.getAnnotation(CountryReflectionFactor.class).value().equals(value)) {
+                    clazz.getAnnotation(CountryReflectionFactor.class).value().equals(countryName)) {
                 try {
                     Object o = clazz.newInstance();
                     if (o instanceof Country) {

@@ -5,10 +5,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import ru.sbertech.android.codegen.myapplication.loggen.Factory$$$Autogenerate;
 import ru.sbertech.android.codegen.myapplication.сountry.Germany;
 import ru.sbertech.android.codegen.myapplication.сountry.USA;
 import ru.sbertech.android.codegen.myapplication.сountry.Russia;
-import ru.sbertech.android.codegen.myapplication.loggen.Factory$$$Autogenerate;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             new FactoryReflection(USA.class, Russia.class, Germany.class);
             FactoryReflection.create("USA");
 
+            ProviderFactory.create("Russia");
         });
     }
 }

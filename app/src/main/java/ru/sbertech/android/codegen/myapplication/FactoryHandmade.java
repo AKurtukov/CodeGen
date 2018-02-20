@@ -18,7 +18,7 @@ public class FactoryHandmade {
         }
     });
 
-    public static Country create(String value) {
-        return factoryMap.get(value);
+    public static Country create(String countryName) {
+        return factoryMap.get(countryName);
     }
 }
