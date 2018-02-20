@@ -4,21 +4,21 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import ru.sbertech.android.codegen.myapplication.entity.Account;
-import ru.sbertech.android.codegen.myapplication.entity.BusinessCard;
-import ru.sbertech.android.codegen.myapplication.entity.Card;
+import ru.sbertech.android.codegen.myapplication.сountry.Germany;
+import ru.sbertech.android.codegen.myapplication.сountry.Russia;
+import ru.sbertech.android.codegen.myapplication.сountry.USA;
 
 public class FactoryHandmade {
 
-    private static final Map<String, EntityMarker> factoryMap = Collections.unmodifiableMap(new HashMap<String, EntityMarker>() {
+    private static final Map<String, Country> factoryMap = Collections.unmodifiableMap(new HashMap<String, Country>() {
         {
-            put("Card", new Card());
-            put("Account", new Account());
-            put("BusinessCard", new BusinessCard());
+            put("USA", new USA());
+            put("Russia", new Russia());
+            put("Germany", new Germany());
         }
     });
 
-    public static EntityMarker create(String value) {
+    public static Country create(String value) {
         return factoryMap.get(value);
     }
 }

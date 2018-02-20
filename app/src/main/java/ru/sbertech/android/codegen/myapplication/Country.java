@@ -1,4 +1,5 @@
 package ru.sbertech.android.codegen.myapplication;
 
-public interface EntityMarker {
+public interface Country {
+    String getCapital();
 }

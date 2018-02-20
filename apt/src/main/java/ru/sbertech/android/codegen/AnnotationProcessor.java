@@ -23,13 +23,13 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 
-@SupportedAnnotationTypes("ru.sbertech.android.codegen.EntityForFactory")
+@SupportedAnnotationTypes("ru.sbertech.android.codegen.CountryСodegenFactory")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class AnnotationProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnvironment) {
 
-        ClassName marker = ClassName.get("ru.sbertech.android.codegen.myapplication", "EntityMarker");
+        ClassName marker = ClassName.get("ru.sbertech.android.codegen.myapplication", "Country");
         ClassName stringClass = ClassName.get(String.class);
 
         ClassName mapClass = ClassName.get(Map.class);
@@ -39,8 +39,8 @@ public class AnnotationProcessor extends AbstractProcessor {
         TypeName hashMapOfStringMarker = ParameterizedTypeName.get(hashMapClass, stringClass, marker);
 
         String putEntityString = "";
-        for (Element element : roundEnvironment.getElementsAnnotatedWith(EntityForFactory.class)) {;
-            putEntityString = putEntityString + "put(\"" + element.getAnnotation(EntityForFactory.class).value()
+        for (Element element : roundEnvironment.getElementsAnnotatedWith(CountryСodegenFactory.class)) {
+            putEntityString = putEntityString + "put(\"" + element.getAnnotation(CountryСodegenFactory.class).value()
                     + "\", new " + element.toString() + "()); \n        ";
         }
 

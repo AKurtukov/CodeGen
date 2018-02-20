@@ -36,4 +36,11 @@ dependencies {
     compile project(':apt-lib')
     annotationProcessor project(':apt')
     compile 'org.jetbrains:annotations-java5:15.0'
+
 }
+
+
+
+//task clean(type: Delete) {
+//    delete rootProject.buildDir
+//}

@@ -1,4 +1,4 @@
-package ru.sbertech.android.codegen.myapplication.entity;
+package ru.sbertech.android.codegen;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface EntityForReflection {
+public @interface CountryReflectionFactor {
     String value();
 }
