@@ -1,22 +1,25 @@
-package ru.sbertech.android.codegen.myapplication;
+package ru.sbertech.android.codegen.myapplication.factories;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
+import ru.sbertech.android.codegen.Country;
+import ru.sbertech.android.codegen.CountryFactory;
 import ru.sbertech.android.codegen.CountryReflectionFactor;
 
-public class FactoryReflection {
-    private static final List<Class<?>> mObjects = new ArrayList<>();
+public class FactoryReflection implements CountryFactory {
+
+    private final List<Class<?>> mFactoryClasses;
 
     public FactoryReflection(Class<?>... clazz) {
-        Collections.addAll(mObjects, clazz);
+        mFactoryClasses = Arrays.asList(clazz);
     }
 
-    public static Country create(String countryName) {
-        for (Class<?> clazz : mObjects) {
+    @Override
+    public Country getCountry(String name) {
+        for (Class<?> clazz : mFactoryClasses) {
             if (clazz.getAnnotation(CountryReflectionFactor.class) != null &&
-                    clazz.getAnnotation(CountryReflectionFactor.class).value().equals(countryName)) {
+                    clazz.getAnnotation(CountryReflectionFactor.class).value().equals(name)) {
                 try {
                     Object o = clazz.newInstance();
                     if (o instanceof Country) {
@@ -31,5 +34,4 @@ public class FactoryReflection {
         }
         return null;
     }
-
 }

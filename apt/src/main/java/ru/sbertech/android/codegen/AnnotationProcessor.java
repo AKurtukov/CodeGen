@@ -29,14 +29,13 @@ public class AnnotationProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnvironment) {
 
-        ClassName marker = ClassName.get("ru.sbertech.android.codegen.myapplication", "Country");
         ClassName stringClass = ClassName.get(String.class);
 
         ClassName mapClass = ClassName.get(Map.class);
-        TypeName mapOfStringMarker = ParameterizedTypeName.get(mapClass, stringClass, marker);
+        TypeName mapOfStringMarker = ParameterizedTypeName.get(mapClass, stringClass, TypeName.get(Country.class));
 
         ClassName hashMapClass = ClassName.get(HashMap.class);
-        TypeName hashMapOfStringMarker = ParameterizedTypeName.get(hashMapClass, stringClass, marker);
+        TypeName hashMapOfStringMarker = ParameterizedTypeName.get(hashMapClass, stringClass, TypeName.get(Country.class));
 
         String putEntityString = "";
         for (Element element : roundEnvironment.getElementsAnnotatedWith(CountryСodegenFactory.class)) {
@@ -45,21 +44,23 @@ public class AnnotationProcessor extends AbstractProcessor {
         }
 
         FieldSpec android = FieldSpec.builder(mapOfStringMarker, "__factoryMap")
-                .addModifiers(Modifier.PRIVATE, Modifier.STATIC, Modifier.FINAL)
+                .addModifiers(Modifier.PRIVATE, Modifier.FINAL)
                 .initializer("$T.unmodifiableMap(new $T()  {\n    {\n        $L \n    } \n})",
                         Collections.class,
                         hashMapOfStringMarker, putEntityString)
                 .build();
 
-        MethodSpec create = MethodSpec.methodBuilder("create")
-                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                .returns(marker)
-                .addParameter(String.class, "value")
-                .addStatement("return __factoryMap.get(value)")
+        MethodSpec create = MethodSpec.methodBuilder("getCountry")
+                .addAnnotation(Override.class)
+                .addModifiers(Modifier.PUBLIC)
+                .returns(TypeName.get(Country.class))
+                .addParameter(String.class, "name")
+                .addStatement("return __factoryMap.get(name)")
                 .build();
 
 
         TypeSpec autogenerateClass = TypeSpec.classBuilder("Factory$$$Autogenerate")
+                .addSuperinterface(CountryFactory.class)
                 .addModifiers(Modifier.PUBLIC)
                 .addField(android)
                 .addMethod(create)
