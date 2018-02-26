@@ -1,11 +1,11 @@
 package ru.sbertech.android.codegen.myapplication.сountry;
 
 import ru.sbertech.android.codegen.Country;
+import ru.sbertech.android.codegen.CountryCodegenFactory;
 import ru.sbertech.android.codegen.CountryReflectionFactor;
-import ru.sbertech.android.codegen.CountryСodegenFactory;
 
-@CountryReflectionFactor("usa")
-@CountryСodegenFactory("usa")
+@CountryReflectionFactor("USA")
+@CountryCodegenFactory("USA")
 public class USA implements Country {
 
     @Override
