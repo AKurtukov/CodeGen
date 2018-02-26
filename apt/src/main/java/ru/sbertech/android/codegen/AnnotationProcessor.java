@@ -23,7 +23,7 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 
-@SupportedAnnotationTypes("ru.sbertech.android.codegen.CountryСodegenFactory")
+@SupportedAnnotationTypes("ru.sbertech.android.codegen.CountryCodegenFactory")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class AnnotationProcessor extends AbstractProcessor {
     @Override
@@ -38,8 +38,8 @@ public class AnnotationProcessor extends AbstractProcessor {
         TypeName hashMapOfStringMarker = ParameterizedTypeName.get(hashMapClass, stringClass, TypeName.get(Country.class));
 
         String putEntityString = "";
-        for (Element element : roundEnvironment.getElementsAnnotatedWith(CountryСodegenFactory.class)) {
-            putEntityString = putEntityString + "put(\"" + element.getAnnotation(CountryСodegenFactory.class).value()
+        for (Element element : roundEnvironment.getElementsAnnotatedWith(CountryCodegenFactory.class)) {
+            putEntityString = putEntityString + "put(\"" + element.getAnnotation(CountryCodegenFactory.class).value()
                     + "\", new " + element.toString() + "()); \n        ";
         }
 
