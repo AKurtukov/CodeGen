@@ -43,7 +43,7 @@ public class AnnotationProcessor extends AbstractProcessor {
                     + "\", new " + element.toString() + "()); \n        ";
         }
 
-        FieldSpec android = FieldSpec.builder(mapOfStringMarker, "__factoryMap")
+        FieldSpec factoryMap = FieldSpec.builder(mapOfStringMarker, "__factoryMap")
                 .addModifiers(Modifier.PRIVATE, Modifier.FINAL)
                 .initializer("$T.unmodifiableMap(new $T()  {\n    {\n        $L \n    } \n})",
                         Collections.class,
@@ -62,7 +62,7 @@ public class AnnotationProcessor extends AbstractProcessor {
         TypeSpec autogenerateClass = TypeSpec.classBuilder("Factory$$$Autogenerate")
                 .addSuperinterface(CountryFactory.class)
                 .addModifiers(Modifier.PUBLIC)
-                .addField(android)
+                .addField(factoryMap)
                 .addMethod(create)
                 .build();
 
